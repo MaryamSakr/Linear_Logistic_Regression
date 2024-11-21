@@ -1,10 +1,14 @@
 import pandas as pandamodule
 import seaborn as sns
-import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import copy
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+
+
 
 class ModelData:
     featuresEnc = LabelEncoder()
@@ -61,7 +65,7 @@ class ModelData:
         scaler = StandardScaler()
         scaled_features = scaler.fit_transform(data)
         return pandamodule.DataFrame(scaled_features, columns=data.columns)
-    
+
 
 DA = ModelData()
 # Load the "co2_emissions_data.csv" dataset
@@ -95,3 +99,4 @@ xTrain,xTest,y1Train,y1Test,y2Train,y2Test = DA.split(X,Y1,Y2,0.2)
 # print("y1Test = ", y1Test)
 # print("y2Train = ", y2Train)
 # print("y2Test = ", y2Test)
+# DA.showHeatMap(numericalData)

@@ -1,8 +1,5 @@
 import numpy as np
-from preprocessing_and_analysis import xTrain, y1Train, xTest, y1Test
-import matplotlib.pyplot as plt
-from sklearn.metrics import r2_score
-from sklearn.metrics import mean_absolute_percentage_error
+
 
 
 class LinearRegression:
@@ -65,34 +62,3 @@ class LinearRegression:
             y[i] = self.linear_model(x[i])
         return y
 
-
-x_train = xTrain[['Fuel Consumption Comb (L/100 km)', 'Engine Size(L)']].to_numpy()
-y_train = y1Train.to_numpy()
-
-x_test = xTest[['Fuel Consumption Comb (L/100 km)', 'Engine Size(L)']].to_numpy()
-y_test = y1Test.to_numpy()
-
-obj = LinearRegression(x_train,y_train, 0.01, 400)
-costs = obj.run_linear_regression()
-
-
-y_predict_train = obj.predict(x_train)
-R2_sklearn_train = r2_score(y_train, y_predict_train)
-print(f"R² Train Data (Scikit-Learn Calculation): {R2_sklearn_train}")
-
-
-y_predict_test = obj.predict(x_test)
-R2_sklearn = r2_score(y_test, y_predict_test)
-print(f"R² test Data (Scikit-Learn Calculation): {R2_sklearn}")
-
-
-
-# mape = mean_absolute_percentage_error(y_test, y_predict)
-# print(f"MAPE: {mape * 100:.2f}%")
-
-plt.plot(costs,linewidth=4)
-plt.title('Error Reduction During Gradient Descent')
-plt.xlabel('Iterations')
-plt.ylabel('Cost/Error')
-plt.grid()
-plt.show()

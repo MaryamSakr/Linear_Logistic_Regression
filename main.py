@@ -1,7 +1,5 @@
-import numpy
 import numpy as np
 import pandas as pd
-
 from preprocessing_and_analysis import ModelData
 from multi_features_gradient_descent import LinearRegression
 from LogisticRegression import LogisticRegressionModel
@@ -51,7 +49,7 @@ xTrain,xTest,y1Train,y1Test,y2Train,y2Test = DA.split(X,Y1,Y2,0.3)
 # print("y1Test = ", y1Test)
 # print("y2Train = ", y2Train)
 # print("y2Test = ", y2Test)
-# DA.showHeatMap(numericalData)
+DA.showHeatMap(numericalData)
 
 
 # numeric features are scaled

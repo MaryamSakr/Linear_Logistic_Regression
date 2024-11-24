@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 class ModelData:
     featuresEnc = LabelEncoder()
     labelEnc = LabelEncoder()
+    scaler = StandardScaler()
     def __init__ (self):
         pass
     
@@ -62,7 +63,10 @@ class ModelData:
         return xTrain,xTest,y1Train,y1Test,y2Train,y2Test
     
     def scale(self,data):
-        scaler = StandardScaler()
-        scaled_features = scaler.fit_transform(data)
+        scaled_features = self.scaler.fit_transform(data)
+        return pandamodule.DataFrame(scaled_features, columns=data.columns)
+
+    def transform(self,data):
+        scaled_features = self.scaler.transform(data)
         return pandamodule.DataFrame(scaled_features, columns=data.columns)
 
